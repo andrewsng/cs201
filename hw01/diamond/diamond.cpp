@@ -10,6 +10,6 @@ int main()
 	int numLines;
 	int numColumns;
 	cout << "Please enter a positive integer!:" << endl;
-	cin >> diamondSize >> endl;
+	cin >> diamondSize;
 	numLines = (diamondSize * 2) - 1;
 }

@@ -1,3 +1,10 @@
+/*
+	diamond.cpp
+	Andrew Ng
+	Sep 15 2019
+	Printing diamond program for hw1
+*/
+
 #include <iostream>
 
 using std::cin;
@@ -9,10 +16,18 @@ int main()
 	int diamondSize;
 	int numColumns;
 	cout << "Please enter a positive integer!:" << endl;
-	cin >> diamondSize;
-	if (diamondSize <= 0 || diamondSize)
+	while (true) {
+		cin >> diamondSize;
+		if (cin.fail() || diamondSize <= 0) {									//checks if cin fails or is 0 or negative
+			std::cerr << "ERROR: Input is not a positive integer." << endl;		//outputs error
+			cin.clear();														//clears failed state of the input stream
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');		//discards all characters in input
+			continue;
+		}
+		break;
+	}
 	numColumns = (diamondSize * 2) - 1;
-	for (int i = -(diamondSize - 1); i < diamondSize; i++) {
+	for (int i = -(diamondSize - 1); i < diamondSize; i++) {	//setting up equally negative and positive bounds for absolute value
 		for (int j = 0; j < abs(i); j++) {
 			cout << " ";
 		}

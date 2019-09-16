@@ -4,6 +4,7 @@
 	Sep 15 2019
 	Dot product and cross product program for hw1
 */
+
 #include <iostream>
 #include <iomanip>
 

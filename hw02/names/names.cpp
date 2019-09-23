@@ -22,13 +22,14 @@ int main()
 	string nameToFind;
 	cout << "Enter 10 Names." << endl;
 	InputNames(names);
-	cout << "Enter a name to search for." << endl;
+	cout << endl << "Enter a name to search for." << endl;
 	std::getline(cin, nameToFind);
 	if (DoesNameExist(nameToFind, names) == true) {
-		cout << "The name exists." << endl;;
+		cout << endl << "The name exists." << endl;;
 	}
 	else {
-		cout << "The name doesn't exist." << endl;
+		cout << endl << "The name doesn't exist." << endl;
 	}
+	PrintNames(names);
 	return 0;
 }

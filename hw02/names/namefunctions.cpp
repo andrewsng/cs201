@@ -16,9 +16,9 @@ using std::endl;
 using std::vector;
 using std::string;
 
-void InputNames(vector<string> &names)
+void InputNames(vector<string>& names)
 {
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 10; i++) {
 		string name;
 		cout << "Please enter a name: ";
 		std::getline(cin, name);
@@ -26,7 +26,7 @@ void InputNames(vector<string> &names)
 	}
 }
 
-bool DoesNameExist(const string &nameToFind, const vector<string> &names)
+bool DoesNameExist(const string& nameToFind, const vector<string>& names)
 {
 	for (vector<string>::const_iterator it = names.begin(); it != names.end(); ++it) {
 		if (*it == nameToFind) {
@@ -37,4 +37,12 @@ bool DoesNameExist(const string &nameToFind, const vector<string> &names)
 		}
 	}
 	return false;
+}
+
+void PrintNames(const vector<string>& names)
+{
+	cout << endl << "The names in this list are: " << endl;
+	for (vector<string>::const_iterator it = names.begin(); it != names.end(); ++it) {
+		cout << *it << endl;
+	}
 }

@@ -18,10 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="scorefunctions.cpp" />
+    <ClCompile Include="scores.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="scorefunctions.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{0DCADF6F-6FA4-413E-877C-83EC3FF614F8}</ProjectGuid>
-    <RootNamespace>names</RootNamespace>
+    <ProjectGuid>{5674EAA8-881C-4788-B552-EEB6088B3D9D}</ProjectGuid>
+    <RootNamespace>scores</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -122,13 +129,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="namefunctions.cpp" />
-    <ClCompile Include="names.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="namefunctions.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

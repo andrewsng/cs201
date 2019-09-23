@@ -46,3 +46,18 @@ void PrintNames(const vector<string>& names)
 		cout << *it << endl;
 	}
 }
+
+void CountCharacters(const vector<string>& names)
+{
+	int numChar = 0;
+	cout << endl;
+	for (vector<string>::const_iterator it = names.begin(); it != names.end(); ++it) {
+		for (int i = 0; i < (*it).length(); ++i) {
+			if ((*it)[i] != ' ') {
+				numChar++;
+			}
+		}
+		cout << "The number of characters in the name, " << *it << " is: " << numChar << endl;
+		numChar = 0;
+	}
+}

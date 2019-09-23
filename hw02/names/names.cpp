@@ -2,7 +2,7 @@
 	names.cpp
 	Andrew Ng
 	Sep 16 2019
-	10 Names program for hw2
+	Names program for hw2
 */
 
 #include <iostream>
@@ -22,7 +22,7 @@ int main()
 	string nameToFind;
 	cout << "Enter 10 Names." << endl;
 	InputNames(names);
-	cout << endl << "Enter a name to search for." << endl;
+	cout << endl << "Enter a name to search for: ";
 	std::getline(cin, nameToFind);
 	if (DoesNameExist(nameToFind, names) == true) {
 		cout << endl << "The name exists." << endl;;
@@ -31,5 +31,6 @@ int main()
 		cout << endl << "The name doesn't exist." << endl;
 	}
 	PrintNames(names);
+	CountCharacters(names);
 	return 0;
 }

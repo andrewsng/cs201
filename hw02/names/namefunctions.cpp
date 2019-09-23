@@ -16,6 +16,10 @@ using std::endl;
 using std::vector;
 using std::string;
 
+/*
+	function InputNames
+	Takes in 10 names as strings and puts them in a vector
+*/
 void InputNames(vector<string>& names)
 {
 	for (int i = 0; i < 10; i++) {
@@ -26,6 +30,11 @@ void InputNames(vector<string>& names)
 	}
 }
 
+/*
+	function DoesNameExist
+	Checks if a string matches any element in a vector
+	Returns true or false
+*/
 bool DoesNameExist(const string& nameToFind, const vector<string>& names)
 {
 	for (vector<string>::const_iterator it = names.begin(); it != names.end(); ++it) {
@@ -39,6 +48,10 @@ bool DoesNameExist(const string& nameToFind, const vector<string>& names)
 	return false;
 }
 
+/*
+	function PrintNames
+	Takes a string vector and prints the elements on separate lines
+*/
 void PrintNames(const vector<string>& names)
 {
 	cout << endl << "The names in this list are: " << endl;
@@ -47,6 +60,11 @@ void PrintNames(const vector<string>& names)
 	}
 }
 
+/*
+	function CountCharacters
+	Takes a string vector and prints the number of characters in each element
+	Does not include spaces
+*/
 void CountCharacters(const vector<string>& names)
 {
 	int numChar = 0;

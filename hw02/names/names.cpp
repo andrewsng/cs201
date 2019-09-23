@@ -16,7 +16,7 @@ using std::endl;
 using std::vector;
 using std::string;
 
-int main()
+int main()	// Prompts for various name inputs and calls functions
 {
 	vector<string> names;
 	string nameToFind;

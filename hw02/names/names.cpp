@@ -20,15 +20,15 @@ int main()
 {
 	vector<string> names;
 	string nameToFind;
+	cout << "Enter 10 Names." << endl;
 	InputNames(names);
 	cout << "Enter a name to search for." << endl;
-	cin >> nameToFind;
+	std::getline(cin, nameToFind);
 	if (DoesNameExist(nameToFind, names) == true) {
 		cout << "The name exists." << endl;;
 	}
 	else {
 		cout << "The name doesn't exist." << endl;
 	}
-
 	return 0;
 }

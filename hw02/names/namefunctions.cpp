@@ -18,7 +18,7 @@ using std::string;
 
 void InputNames(vector<string> &names)
 {
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 5; i++) {
 		string name;
 		cout << "Please enter a name: ";
 		std::getline(cin, name);
@@ -28,12 +28,13 @@ void InputNames(vector<string> &names)
 
 bool DoesNameExist(const string &nameToFind, const vector<string> &names)
 {
-	for (string name : names) {
-		if (name == nameToFind) {
+	for (vector<string>::const_iterator it = names.begin(); it != names.end(); ++it) {
+		if (*it == nameToFind) {
 			return true;
 		}
 		else {
-			return false;
+			continue;
 		}
 	}
+	return false;
 }

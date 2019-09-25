@@ -18,7 +18,23 @@ int main()
 {
 	string boxString;
 	int thickness;
-	std::getline(cin, boxString);
-	cin >> thickness;
-	printBox(boxString, thickness);
+	while (true) {
+		cout << "Take a line and put it in a box!" << endl;
+		cout << "Enter the line you want in the box:" << endl;
+		cout << "Type Exit to exit the program." << endl;
+		std::getline(cin, boxString);
+		if (boxString == "Exit") {
+			break;
+		}
+		cout << "Enter a positive integer for the thickness of the box." << endl;
+		cin >> thickness;
+		while (cin.fail() || thickness <= 0) {
+			std::cerr << "You did not enter a positive integer. Try again." << endl;
+			cin.clear();
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cin >> thickness;
+		}
+		printBox(boxString, thickness);
+		cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
 }

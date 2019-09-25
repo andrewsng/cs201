@@ -15,20 +15,23 @@ using std::string;
 
 void printBox(const std::string boxString, int thickness)
 {
-	int boxWidth = (thickness * 2) + (boxString.length()) + 2;
+	int boxWidth = (thickness * 2) + (boxString.size()) + 2;
+	const int inputSpot = thickness + 1;
 	string filledLine(boxWidth, '*');
 	string spacedLine = filledLine;
-	spacedLine.replace(thickness, (boxString.length() + 2), (boxString.length() + 2), ' ');
+	spacedLine.replace(thickness, (boxString.size() + 2), (boxString.size() + 2), ' ');
 	string inputLine = spacedLine;
-	const int i = thickness + 2;
-	inputLine.replace(i, boxString.length(), boxString);
-	cout << filledLine << endl;
-	cout << spacedLine << endl;
-	cout << inputLine << endl;
-
+	inputLine.replace(inputSpot, boxString.size(), boxString);
+	printLines(filledLine, thickness);
+	printLines(spacedLine, 1);
+	printLines(inputLine, 1);
+	printLines(spacedLine, 1);
+	printLines(filledLine, thickness);
 }
 
-void printLine(const int boxWidth, const int thickness)
+void printLines(const string printedString, const int timesToPrint)
 {
-
+	for (int i = 0; i < timesToPrint; ++i) {
+		cout << printedString << endl;
+	}
 }

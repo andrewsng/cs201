@@ -12,6 +12,6 @@
 
 void printBox(const std::string boxString, int thickness);
 
-void printLine(const int boxWidth, const int thickness);
+void printLines(const std::string printedString, const int timesToPrint);
 
 #endif

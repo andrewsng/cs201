@@ -1,3 +1,10 @@
+/*
+	Lab011.cpp
+	Andrew Ng
+	Sep 27 2019
+	Lab 11 program for CS201
+*/
+
 #include <iostream>
 #include <string>
 #include <vector>

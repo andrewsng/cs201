@@ -20,8 +20,7 @@ int main()
 	int thickness;
 	while (true) {
 		cout << "Take a line and put it in a box!" << endl;
-		cout << "Enter the line you want in the box:" << endl;
-		cout << "Type Exit to exit the program." << endl;
+		cout << "Enter the line you want in the box, or type Exit to stop:" << endl;
 		std::getline(cin, boxString);
 		if (boxString == "Exit") {
 			break;

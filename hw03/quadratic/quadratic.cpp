@@ -22,7 +22,7 @@ int main()
 	cin >> b;
 	cout << "Enter c: ";
 	cin >> c;
-	if ((b * b) - (4 * a * c) < 0) {
+	if ((b * b) - (4 * a * c) < 0) { // checking for non-real solutions
 		cout << "Your quadratic has no real solutions." << endl;
 	}
 	else {

@@ -11,6 +11,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+// Takes in an int and prints out the collatz sequence at that starting int
 void collatz(int& n)
 {
 	while (n != 1) {
@@ -25,6 +26,7 @@ void collatz(int& n)
 	cout << n << endl;
 }
 
+// Repeatedly checks user input for positive int and calls collatz function
 int main()
 {
 	int n;

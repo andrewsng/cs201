@@ -14,6 +14,11 @@ using std::cout;
 using std::endl;
 using std::string;
 
+/*
+	function main
+	Prompts for a string and box thickness
+	Checks for exit input and for positive integers
+*/
 int main()
 {
 	string boxString;

@@ -2,7 +2,7 @@
 	boxer.h
 	Andrew Ng
 	Sep 23 2019
-	Header file for boxer function for hw3
+	Header file for boxer functions for hw3
 */
 
 #pragma once

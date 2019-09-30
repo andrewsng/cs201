@@ -13,6 +13,11 @@ using std::cout;
 using std::endl;
 using std::string;
 
+/*
+	function printBox
+	creates different types of lines that make up the box
+	calls printLines to print the box
+*/
 void printBox(const std::string boxString, int thickness)
 {
 	int boxWidth = (thickness * 2) + (boxString.size()) + 2;
@@ -29,6 +34,10 @@ void printBox(const std::string boxString, int thickness)
 	printLines(filledLine, thickness);
 }
 
+/*
+	function printLines
+	takes in a string and prints it a given amount of times on new lines
+*/
 void printLines(const string printedString, const int timesToPrint)
 {
 	for (int i = 0; i < timesToPrint; ++i) {

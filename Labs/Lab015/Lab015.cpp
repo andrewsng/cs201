@@ -10,7 +10,6 @@
 #include <sstream>
 #include <vector>
 #include "squarestring.h"
-#include <cmath>
 
 using std::cin;
 using std::cout;
@@ -22,6 +21,9 @@ int main()
 {
 	vector<string> testNumbers{ "69", "69a", "a69", "5.6", "    68", "\t11", "68 69", "0xA"};
 	for (auto s : testNumbers) {
-		squareString(s);
+		if (!squareString(s)) {
+			cout << "ERROR: String did not begin with a number" << endl;
+		}
 	}
+	return 0;
 }

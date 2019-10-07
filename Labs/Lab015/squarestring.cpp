@@ -1,3 +1,10 @@
+/*
+	squarestring.cpp
+	Andrew Ng
+	Oct 7 2019
+	source for square string function
+*/
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -8,15 +15,16 @@ using std::cout;
 using std::endl;
 using std::string;
 
-void squareString(string squared)
+bool squareString(string squared)
 {
 	std::istringstream numstream(squared);
 	double num;
 	numstream >> num;
 	if (!numstream) {
-		cout << "ERROR: String did not begin with a number" << endl;
+		return false;
 	}
 	else {
 		cout << num * num << endl;
+		return true;
 	}
 }

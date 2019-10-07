@@ -1,3 +1,10 @@
+/*
+	squarestring.cpp
+	Andrew Ng
+	Oct 7 2019
+	header for square string function
+*/
+
 #pragma once
 
 #ifndef SQUARESTRING_H
@@ -5,6 +12,6 @@
 
 #include <string>
 
-void squareString(std::string squared);
+bool squareString(std::string squared);
 
 #endif

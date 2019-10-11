@@ -11,6 +11,14 @@
 //
 // For CS 201 Fall 2018
 
+/*
+	search_compare.cpp
+	Andrew Ng
+	Oct 11 2019
+	Initializing vectors, calling functions
+	for lab 17
+*/
+
 #include <iostream>
 using std::cout;
 using std::endl;

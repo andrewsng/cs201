@@ -13,10 +13,18 @@ using std::vector;
 int main()
 {
 	string str;
-	if (!ReadLine(str)) {
-		cout << "false" << endl;
+	vector<string> tokens;
+	while (true) {
+		ReadLine(str);
+		cout << StringToTokensWS(tokens, str) << " tokens" << endl;
+		for (auto s : tokens) {
+			cout << s << endl;
+		}
+		if (str == "end") {
+			tokens.pop_back();
+			cout << tokens.size() << endl;
+			break;
+		}
 	}
-	else {
-		cout << "true" << endl;
-	}
+	AnalyzeTokens(tokens);
 }

@@ -20,12 +20,24 @@ bool ReadLine(string& str)
 	else {
 		return true;
 	}
-
 }
 
-unsigned StringToTokensWS(vector<string>& tokens)
+unsigned StringToTokensWS(vector<string>& tokens, string& str)
 {
-	return 0;
+	istringstream instream(str);
+	string strToPush;
+	string empty;
+	while (true) {
+		instream >> strToPush;
+		if (instream) {
+			tokens.push_back(strToPush);
+		}
+		else {
+			break;
+		}
+	}
+	tokens.push_back(empty);
+	return tokens.size();
 }
 
 void AnalyzeTokens(const vector<string>& tokens)

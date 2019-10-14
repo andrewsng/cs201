@@ -42,5 +42,12 @@ unsigned StringToTokensWS(vector<string>& tokens, string& str)
 
 void AnalyzeTokens(const vector<string>& tokens)
 {
+	for (auto s : tokens) {
+		if (s.empty()) {
+			cout << "[whitespace]" << endl;
+		}
+		for (int i = 0; i < s.size(); ++i) {
 
+		}
+	}
 }

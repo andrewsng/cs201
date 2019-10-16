@@ -1,3 +1,10 @@
+/*
+	tokenizertest.cpp
+	Andrew Ng
+	Oct 15 2019
+	header for string/token functions for hw 4
+*/
+
 #pragma once
 
 #ifndef TOKENIZER_H

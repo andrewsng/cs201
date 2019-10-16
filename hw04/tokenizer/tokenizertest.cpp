@@ -16,13 +16,11 @@ int main()
 	vector<string> tokens;
 	while (true) {
 		ReadLine(str);
-		cout << StringToTokensWS(tokens, str) << " tokens" << endl;
-		for (auto s : tokens) {
-			cout << s << endl;
-		}
-		if (str == "end") {
+		StringToTokensWS(tokens, str);
+		if (tokens[tokens.size() - 2] == "end" ||
+			tokens[tokens.size() - 2] == "End" || 
+			tokens[tokens.size() - 2] == "END") {
 			tokens.pop_back();
-			cout << tokens.size() << endl;
 			break;
 		}
 	}

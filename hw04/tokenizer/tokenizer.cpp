@@ -1,5 +1,5 @@
 /*
-	tokenizertest.cpp
+	tokenizer.cpp
 	Andrew Ng
 	Oct 15 2019
 	source for string/token functions for hw 4

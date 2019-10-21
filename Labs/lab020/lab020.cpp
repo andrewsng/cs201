@@ -17,7 +17,7 @@ using std::setprecision;
 
 int main()
 {
-	for (int i = 0; i <= 360; i += 5) {
+	for (int i = 0; i <= 180; i += 5) {
 		cout << setw(3) << i << " "
 			<< setw(11) << setprecision(8) << std::fixed 
 			<< cos(i * (M_PI / 180.)) << endl;

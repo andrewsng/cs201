@@ -34,7 +34,7 @@ bool ReadLine(string& str)
 	}
 }
 
-// 15 + 4(20^2) * -9.3
+// 15 + (sin(50) * -4) / ln(4^2) - -7.3
 // separates strings by whitespace, pushes strings into a vector
 unsigned StringToTokensWS(vector<string>& tokens, string& str)
 {
@@ -44,7 +44,7 @@ unsigned StringToTokensWS(vector<string>& tokens, string& str)
 	unsigned tokenCounter = 1;
 	for (size_t i = 0; i < str.size(); ++i) {
 		for (size_t j = i; j <= str.size(); ++j) {
-			if (isdigit(str[i]) && !isdigit(str[j])) {
+			if ((isdigit(str[i]) || str[i] == '-' || str[i] == '.') && (!isdigit(str[j]) && str[j] != '-' && str[j] != '.')) {
 				tokens.push_back(str.substr(i, j - i));
 				i = j;
 			}
@@ -52,13 +52,14 @@ unsigned StringToTokensWS(vector<string>& tokens, string& str)
 				tokens.push_back(str.substr(i, j - i));
 				i = j;
 			}
-			if (ispunct(str[i])) {
+			if (ispunct(str[i]) && str[i] != '-') {
 				tokens.push_back(str.substr(i, 1));
 				++i;
 			}
 		}
 	}
-	AnalyzeTokens(tokens);
+	// AnalyzeTokens(tokens);
+	EvaluateTokens(tokens);
 	/*
 	while (true) {
 		instream >> strToPush;
@@ -77,6 +78,53 @@ unsigned StringToTokensWS(vector<string>& tokens, string& str)
 	return tokenCounter;
 }
 
+// 15 + (sin(50)*-4) / ln(4^2) - -7.3
+//  0 1 2  3  4  5 6 7  8 9 1011121314151617 18
+
+void EvaluateTokens(vector<string>& tokens) {
+	cout << endl;
+	for (const auto& s : tokens) {
+		cout << s << " ";
+	}
+	cout << endl;
+	size_t num = 0;
+	vector<int> leftParen;
+	for (size_t i = 0; i < tokens.size(); ++i) {
+		// cout << i << endl;
+		if (tokens[i] == "(") {
+			leftParen.push_back(i);
+			for (size_t j = i + 1; j < tokens.size(); ++j) {
+				if (tokens[j] == "(") {
+					++num;
+					leftParen.push_back(j);
+					i = j;
+					continue;
+				}
+				if (tokens[j] == ")") {
+					// EvalInside(i, j);
+					tokens.erase(tokens.begin() + i, tokens.begin() + j + 1);
+					tokens.insert(tokens.begin() + i, "VALUE"); //EvalInside(i, j));
+					if (num > 0) {
+						--num;
+					}
+					else {
+						leftParen.clear();
+					}
+					i = 0;
+					for (const auto& s : tokens) {
+						cout << s << " ";
+					}
+					cout << endl;
+					break;
+				}
+			}
+		}
+	}
+}
+
+void EvalInside(const size_t& left, const size_t& right) {
+	vector<int> integers;
+}
 
 // performs various checks on tokens, prints them with determined type of token
 void AnalyzeTokens(const vector<string>& tokens)

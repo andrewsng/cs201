@@ -17,6 +17,10 @@ bool ReadLine(std::string& str);
 
 unsigned StringToTokensWS(std::vector<std::string>& tokens, std::string& str);
 
+void EvaluateTokens(std::vector<std::string>& tokens);
+
+void EvalInside(const size_t& left, const size_t& right);
+
 void AnalyzeTokens(const std::vector<std::string>& tokens);
 
 #endif

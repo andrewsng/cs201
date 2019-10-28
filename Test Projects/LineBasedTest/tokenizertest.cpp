@@ -21,8 +21,8 @@ int main()
 {
 	string str;
 	vector<string> tokens;
-	cout << "Enter some text, and type "
-		 << "\"End\", \"end\", or \"END\" when done." << endl;
+	//cout << "Enter some text, and type "
+	//	 << "\"End\", \"end\", or \"END\" when done." << endl;
 
 	// Reads lines until it reads end input
 	while (true) {

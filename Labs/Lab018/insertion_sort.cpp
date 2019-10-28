@@ -1,3 +1,11 @@
+/*
+	insertion_sort.cpp
+	Andrew Ng
+	Oct 28 2019
+	InsertionSort function for
+	lab 18 for cs201
+*/
+
 /**
  * @file     insertion_sort.cpp
  * @author   Student Name
@@ -8,12 +16,22 @@
 
 #include <iostream>
 #include <vector>
+#include "insertion_sort.hpp"
 
 void insertionSort(std::vector<int> & data) {
-	int copy;
-	for (int i = 1; i < data.size(); ++i) {
-		if (data[i] < 
+	for (size_t i = 1; i < data.size(); ++i) {
+		int copied;
+		if (data[i - 1] > data[i]) {
+			copied = data[i];
+			size_t j = i;
+			while (j > 0 && data[j - 1] > copied) {
+				data[j] = data[j - 1];
+				--j;
+			}
+			data[j] = copied;
+		}
 	}
+
 	// TODO Write the code for insertionSort
 
 //	1. For each element, with the second element as the current element

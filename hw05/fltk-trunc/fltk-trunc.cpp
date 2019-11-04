@@ -7,7 +7,9 @@
 #include <FL/Fl_Widget.H>
 
 #include <string>
+#include <sstream>
 #include <iostream>
+#include "truncstruct.hpp"
 
 #pragma comment(lib, "fltk.lib")
 #pragma comment(lib, "comctl32.lib")
@@ -47,12 +49,23 @@ void stringChanged(Fl_Widget* w, void* userdata) {
 
 
 void intChanged(Fl_Widget* w, void* userdata) {
-
+	if (!view.inputInt) {
+		return;
+	}
+	std::istringstream inputNum(view.inputInt->value());
+	size_t newLen;
+	inputNum >> newLen;
+	model.inputInt = newLen;
 }
 
 
 void truncateClicked(Fl_Widget* w, void* userdata) {
-
+	if (!view.output) {
+		return;
+	}
+	StringInfo truncInfo{ model.inputStr, model.inputInt };
+	std::string truncated = trunc(truncInfo).str;
+	view.output->value(truncated.c_str());
 }
 
 

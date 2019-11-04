@@ -70,7 +70,11 @@ void truncateClicked(Fl_Widget* w, void* userdata) {
 
 
 void quitClicked(Fl_Widget* w, void* userdata) {
-
+	if (!userdata) {
+		return;
+	}
+	Fl_Window* window = (Fl_Window*)userdata;
+	window->hide();
 }
 
 

@@ -42,6 +42,8 @@ Model model;
 View view;
 
 
+int bulls(const std::vector<int>& answer, const std::vector<int>& guess);
+int cows(const std::vector<int>& answer, const std::vector<int>& guess);
 void inputChanged(Fl_Widget* w, void* userdata);
 void checkClicked(Fl_Widget* w, void* userdata);
 void quitClicked(Fl_Widget* w, void* userdata);
@@ -50,6 +52,7 @@ Fl_Window* CreateWindow();
 
 int bulls(const std::vector<int>& answer, const std::vector<int>& guess)
 {
+	// Checks if number is right and in the correct spot
 	int numBulls = 0;
 	for (int i = 0; i < 4; ++i) {
 		if (guess[i] == answer[i]) {
@@ -62,6 +65,7 @@ int bulls(const std::vector<int>& answer, const std::vector<int>& guess)
 
 int cows(const std::vector<int>& answer, const std::vector<int>& guess)
 {
+	// Checks if number is right but in the wrong spot
 	int numCows = 0;
 	if (guess[0] == answer[1] || guess[0] == answer[2] || guess[0] == answer[3]) {
 		numCows++;
@@ -80,9 +84,13 @@ int cows(const std::vector<int>& answer, const std::vector<int>& guess)
 
 
 void inputChanged(Fl_Widget* w, void* userdata) {
+	// checks if view.input hasn't changed (is still nullptr)
 	if (!view.input) {
 		return;
 	}
+
+	// gets input line as string,
+	// pushed individual digits into vector of ints
 	std::string number = view.input->value();
 	std::vector<int> guess;
 	for (int i = 0; i < number.size(); ++i) {
@@ -101,16 +109,24 @@ void inputChanged(Fl_Widget* w, void* userdata) {
 
 
 void checkClicked(Fl_Widget* w, void* userdata) {
+	// checks if outputs haven't changed (is still nullptr)
 	if (!view.outputBulls || !view.outputCows) {
 		return;
 	}
+
+	//checks if stored vector isn't the right size
 	if (model.input.size() != 4) {
 		return;
 	}
+
+	// calls evaluation of bull and cow values
+	// pushes strings of those values to the output lines
 	int b = bulls(answer, model.input);
 	int c = cows(answer, model.input);
 	std::string bullsLine = std::to_string(b);
 	std::string cowsLine = std::to_string(c);
+
+	// win condition
 	if (b == 4) {
 		bullsLine += "    FOUR BULLS: YOU WIN!";
 	}
@@ -120,9 +136,13 @@ void checkClicked(Fl_Widget* w, void* userdata) {
 
 
 void quitClicked(Fl_Widget* w, void* userdata) {
+	// checks if given pointer, window, is nullptr
 	if (!userdata) {
 		return;
 	}
+
+	// casts given void pointer to a Fl_Window pointer
+	// calls hide() function on Fl_Window* window to close it
 	Fl_Window* window = (Fl_Window*)userdata;
 	window->hide();
 }

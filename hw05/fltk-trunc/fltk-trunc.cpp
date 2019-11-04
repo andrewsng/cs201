@@ -39,7 +39,10 @@ Fl_Window* CreateWindow();
 
 
 void stringChanged(Fl_Widget* w, void* userdata) {
-
+	if (!view.inputStr) {
+		return;
+	}
+	model.inputStr = view.inputStr->value();
 }
 
 

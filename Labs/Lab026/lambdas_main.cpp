@@ -1,3 +1,12 @@
+/*
+	lambdas_main.cpp
+	Andrew Ng
+	Nov 4 2019
+	main function for lab 26
+	cs201
+*/
+
+
 /**
  * @file     lambdas.hpp
  * @author   Student Name
@@ -38,25 +47,30 @@ int main() {
 
 	std::sort(text.begin(), text.end(),
 		[](SizeStringPair a, SizeStringPair b) {
-			return a > b;
+			return a.first > b.first;
 		});
 
 
 	// TODO: REQUIRED
 	//       Use printVectorPairs() to print the vector
 
-	std::cout << printVectorPairs(text.begin(), text.end());
+	std::cout << printVectorPairs(text.begin(), text.end()) << std::endl;
 
 
 	// TODO: ADDITIONAL 1
 	//       Use std::sort with a comparison lambda function that sorts
 	//       the vector pairs with the second member in ascending order.
 
+	std::sort(text.begin(), text.end(),
+		[](SizeStringPair a, SizeStringPair b) {
+			return a.second.compare(b.second) < 0;
+		});
 
 
 	// TODO: ADDITIONAL 1
 	//       Use printVectorPairs() to print the vector
 
+	std::cout << printVectorPairs(text.begin(), text.end()) << std::endl;
 
 
 	// TODO: ADDITIONAL 2
@@ -64,6 +78,21 @@ int main() {
 	//       the vector pairs where the pair's second.length() > 15.
 	//       Print the vector as described in the lab.
 
+	auto start = text.begin();
+	while (true) {
+		if (start == text.end()) {
+			break;
+		}
+		auto iter = std::find_if(start, text.end(),
+			[](SizeStringPair a) {
+				return a.second.size() > 15;
+			});
+		if (iter == text.end()) {
+			break;
+		}
+		std::cout << "{ " << iter->first << ", " << iter->second << " }" << std::endl;
+		start = iter + 1;
+	}
 
 
 	return 0;

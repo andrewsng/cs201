@@ -1,3 +1,10 @@
+/*
+	Lab027.cpp
+	Andrew Ng
+	Nov 6 2019
+	lab 27 for cs201
+*/
+
 #include <iostream>
 #include <random>
 

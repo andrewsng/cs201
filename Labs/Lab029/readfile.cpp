@@ -1,3 +1,11 @@
+/*
+	readfile.cpp
+	Andrew Ng
+	Nov 11 2019
+	lab 29 for cs201
+*/
+
+
 // readfile.cpp  INCOMPLETE
 // Glenn G. Chappell
 // 6 Apr 2018
@@ -60,8 +68,7 @@ bool readFile(const string & filename) {
 			cout << line << endl;
 		}
 	}
-
-	cout << endl;  // DUMMY output
+	cout << endl;
 	return true;
 
 	// ***************************************************************
@@ -82,7 +89,7 @@ bool readFile1(const string & filename) {
 	//         but print ERROR: in front of
 	//         lines with strings.
 
-		ifstream fin(filename);
+	ifstream fin(filename);
 	if (!fin) {
 		return false;
 	}
@@ -100,15 +107,14 @@ bool readFile1(const string & filename) {
 			int num;
 			is >> num;
 			if (!num) {
-				cout << "error " << line << endl;
+				cout << "ERROR: " << line << endl;
 			}
 			else {
 				cout << num << endl;
 			}
 		}
 	}
-
-	cout << endl;  // DUMMY output
+	cout << endl;
 	return true;
 
 	// ***************************************************************
@@ -129,8 +135,29 @@ bool readFile2(const string & filename) {
 	//         while(iStringStreamOnLine >> str)
 	//         if(iStringStreamOnStr >> num)
 
-	cout << filename;  // DUMMY output
-	return false;  // DUMMY return
+	ifstream fin(filename);
+	if (!fin) {
+		return false;
+	}
+	else {
+		while (true) {
+			string str;
+			fin >> str;
+			if (!fin) {
+				if (fin.eof()) {
+					break;
+				}
+				return false;
+			}
+			istringstream is(str);
+			int num;
+			if (is >> num) {
+				cout << num << endl;
+			}
+		}
+	}
+	cout << endl;
+	return true;
 
 	// ***************************************************************
 }

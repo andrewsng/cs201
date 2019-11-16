@@ -1,3 +1,10 @@
+/*
+	arrayptrs.cpp
+	Andrew Ng
+	Nov 15 2019
+	lab 31 for cs201
+*/
+
 // arrayptrs.cpp  INCOMPLETE
 // Glenn G. Chappell
 // 11 Apr 2018
@@ -14,6 +21,9 @@ using std::endl;
 using std::cin;
 #include <iomanip>
 using std::setw;
+#include <string>
+using std::string;
+using std::to_string;
 
 // printPointerStuff
 // Given two pointers to items in a common int array, print
@@ -27,15 +37,16 @@ void printPointerStuff(int * ip1, int * ip2) {
 	cout << "Distance from ip1 to ip2: ";
 
 	// TODO: REQUIRED. Print the distance between two array pointers. *******
-	auto dist = ip2 - ip1;
+	int dist = ip2 - ip1 + 1;
 	cout << dist << endl;;
     // **********************************************************************
 
 	cout << "Item halfway between those pointed to by ip1, ip2: ";
 
 	// TODO: REQUIRED. Print the value at the "middle" of the array. ********
-	int* middle = ip1 + (dist/2);
-	cout << *middle << endl;
+	int middle = (dist - 1) >> 1;
+	int* mid = ip1 + middle;
+	cout << *mid << endl;
 
     // **********************************************************************
 
@@ -43,7 +54,22 @@ void printPointerStuff(int * ip1, int * ip2) {
 	//       elements.  Surround the "middle" int with parentheses.
 	//       HINT: save it with parentheses in a string.
 
-
+	int counter = 0;
+	while (ip1 <= ip2) {
+		if (ip1 == mid) {
+			string num = "(" + to_string(*ip1) + ")";
+			cout << setw(6) << num;
+		}
+		else {
+			cout << setw(6) << *ip1;
+		}
+		++ip1;
+		++counter;
+		if (counter % 10 == 0) {
+			cout << endl;
+		}
+	}
+	counter = 1;
 
     // **********************************************************************
 	std::cout << std::endl << std::endl;

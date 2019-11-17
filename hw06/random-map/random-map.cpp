@@ -10,6 +10,33 @@ using std::cout;
 using std::endl;
 
 
+int RandomBetweenU(int first, int last)
+{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<int> udist(first, last);
+	return udist(gen);
+}
+
+
+int RandomBetweenN(int first, int last)
+{
+	return 0;
+}
+
+
+int RandomBetwwen(int first, int last)
+{
+	return 0;
+}
+
+
+void PrintDistribution(const std::map<int, int>& numbers)
+{
+
+}
+
+
 int main()
 {
 	std::random_device rd;

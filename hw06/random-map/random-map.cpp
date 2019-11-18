@@ -4,10 +4,16 @@
 #include <map>
 #include <random>
 #include <cmath>
+#include <stdlib.h>
 
 
 using std::cout;
 using std::endl;
+
+
+int clamp(int x, int a, int b) {
+	return (x < a) ? (a) : (x > b) ? (b) : (x);
+}
 
 
 int RandomBetweenU(int first, int last)
@@ -21,11 +27,16 @@ int RandomBetweenU(int first, int last)
 
 int RandomBetweenN(int first, int last)
 {
-	return 0;
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	int mean = ((last - first) / 2) + 2;
+	int stddev = mean / 3;
+	std::normal_distribution<> ndist(mean, stddev);
+	return clamp(ndist(gen), first, last);
 }
 
 
-int RandomBetwwen(int first, int last)
+int RandomBetween(int first, int last)
 {
 	return 0;
 }
@@ -33,7 +44,11 @@ int RandomBetwwen(int first, int last)
 
 void PrintDistribution(const std::map<int, int>& numbers)
 {
-
+	for (auto p : numbers) {
+		std::cout << std::setw(2)
+			<< p.first << ' ' << std::string(p.second / 200, '*') << '\n';
+	}
+	cout << endl;
 }
 
 
@@ -58,4 +73,19 @@ int main()
 		std::cout << std::setw(2)
 			<< p.first << ' ' << std::string(p.second / 200, '*') << '\n';
 	}
+	std::map<int, int> histU;
+	for (int i = 0; i < 10000; ++i) {
+		++histU[std::round(RandomBetweenU(1, 6))];
+	}
+	std::map<int, int> histN;
+	for (int i = 0; i < 10000; ++i) {
+		++histN[std::round(RandomBetweenN(1, 6))];
+	}
+	std::map<int, int> histR;
+	for (int i = 0; i < 10000; ++i) {
+		++histR[std::round(RandomBetween(1, 6))];
+	}
+	PrintDistribution(histU);
+	PrintDistribution(histN);
+	//PrintDistribution(histR);
 }

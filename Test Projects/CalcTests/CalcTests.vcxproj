@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{70D72769-ECD0-47D2-A68F-CAA83A9F422D}</ProjectGuid>
-    <RootNamespace>LineBasedTesting</RootNamespace>
+    <ProjectGuid>{BF96DC04-5968-45F9-AA37-9EF40F2C8DB0}</ProjectGuid>
+    <RootNamespace>CalcTests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -123,11 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="tokenizer.cpp" />
-    <ClCompile Include="tokenizertest.cpp" />
+    <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menus.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tokenizer.h" />
+    <ClInclude Include="GMPHeader.h" />
+    <ClInclude Include="Header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

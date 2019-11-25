@@ -18,7 +18,9 @@ int main()
 	std::string fileName = "parrot.ppm";
 	std::string newFile = "newparrot.ppm";
 	Image3 parrot;
-	parrot.loadPPM(fileName);
+	if (!parrot.loadPPM(fileName)) {
+		cout << "ERROR: File Cannot be Opened" << endl;
+	}
 	parrot.printASCII(cout);
 	parrot.savePPM(newFile);
 }

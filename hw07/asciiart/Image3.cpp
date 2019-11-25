@@ -46,7 +46,6 @@ bool Image3::loadPPM(const std::string& path) {
 	// REQUIREMENT: Use the STREAM operators for the file contents
 	std::ifstream fin(path);
 	if (!fin) {
-		std::cout << "file ERROR" << std::endl;
 		return false;
 	}
 	fin >> *this;
@@ -89,9 +88,8 @@ std::istream& operator>>(std::istream& istr, Image3& image) {
 	std::string id;
 	istr >> id;
 	if (id != "P3") {
-		std::cout << "ERROR" << std::endl;
+		std::cout << "ERROR: Bad File Format" << std::endl;
 	}
-	std::cout << "id is: " << id << std::endl;
 	while (true) {
 		char c;
 		istr >> c;
@@ -109,9 +107,6 @@ std::istream& operator>>(std::istream& istr, Image3& image) {
 	image.pixels.resize(3 * image.w * image.h, empty);
 	unsigned max;
 	istr >> max;
-	std::cout << "width is: " << image.w << std::endl;
-	std::cout << "height is: " << image.h << std::endl;
-	std::cout << "max value is: " << max << std::endl;
 	for (unsigned y = 0; y < image.h; ++y) {
 		for (unsigned x = 0; x < image.w; ++x) {
 			Color3 newColor;

@@ -15,10 +15,10 @@ using std::vector;
 
 int main()
 {
-	std::string fileName = "\"parrot.ppm\"";
+	std::string fileName = "parrot.ppm";
+	std::string newFile = "newparrot.ppm";
 	Image3 parrot;
 	parrot.loadPPM(fileName);
-	
-	//fin >> parrot;
-
+	parrot.printASCII(cout);
+	parrot.savePPM(newFile);
 }

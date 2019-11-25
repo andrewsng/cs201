@@ -25,7 +25,7 @@ Color3::Color3(int R, int G, int B) {
 int Color3::weightedSum() const {
 	// Implement Y = 0.2126R + 0.7152G + 0.0722B
 	// Ensure values are inside the range 0 to 255
-	unsigned luminance = (0.2126 * r) + (0.7152 * g) + (0.0722 * b);
+	unsigned luminance = (0.2126 * (int)r) + (0.7152 * (int)g) + (0.0722 * (int)b);
 	luminance = saturate(luminance, 255);
 	return luminance;
 }
@@ -50,8 +50,14 @@ std::ostream& operator<<(std::ostream& ostr, const Color3& color) {
 
 std::istream& operator>>(std::istream& istr, Color3& color) {
 	// Implement your own input for a Color3
-	istr >> color.r;
-	istr >> color.g;
-	istr >> color.b;
+	int rVal;
+	int gVal;
+	int bVal;
+	istr >> rVal;
+	istr >> gVal;
+	istr >> bVal;
+	color.r = rVal;
+	color.g = gVal;
+	color.b = bVal;
 	return istr;
 }

@@ -36,6 +36,8 @@ void Image3::setPixel(unsigned x, unsigned y, const Color3& color) {
 bool Image3::savePPM(const std::string& path) const {
 	// TODO: Save the image to the disk
 	// REQUIREMENT: Use the STREAM operators for the file contents
+	std::ofstream fout(path);
+	fout << *this;
 	return false;
 }
 
@@ -44,7 +46,7 @@ bool Image3::loadPPM(const std::string& path) {
 	// REQUIREMENT: Use the STREAM operators for the file contents
 	std::ifstream fin(path);
 	if (!fin) {
-		std::cout << "ERROR" << std::endl;
+		std::cout << "file ERROR" << std::endl;
 		return false;
 	}
 	fin >> *this;
@@ -53,17 +55,12 @@ bool Image3::loadPPM(const std::string& path) {
 
 void Image3::printASCII(std::ostream& ostr) const {
 	// TODO: Print an ASCII version of this image
-	for (unsigned j = 0; j < h; ++j) {
-		for (unsigned i = 0; i < w; ++i) {
-
+	for (unsigned y = 0; y < h; ++y) {
+		for (unsigned x = 0; x < w; ++x) {
+			unsigned luminance = pixels[y * w + x].weightedSum();
+			std::cout << pixels[y * w + x].asciiValue(luminance);
 		}
-	}
-	for (unsigned i = 0; i < (3 * w * h); ++i) {
-		if (i % w == 0) {
-			std::cout << "\n" << std::endl;
-		}
-		unsigned luminance = pixels[i].weightedSum();
-		std::cout << pixels[i].asciiValue(luminance);
+		std::cout << "\n";
 	}
 }
 
@@ -72,6 +69,17 @@ void Image3::printASCII(std::ostream& ostr) const {
 std::ostream& operator<<(std::ostream& ostr, const Image3& image) {
 	// TODO: Write out PPM image format to stream
 	// ASSUME FORMAT WILL BE GOOD
+	ostr << "P3\n";
+	ostr << image.h << ' ';
+	ostr << image.w << '\n';
+	unsigned max = 255;
+	ostr << max << '\n';
+	for (unsigned y = 0; y < image.h; ++y) {
+		for (unsigned x = 0; x < image.w; ++x) {
+			ostr << image.pixels[y * image.w + x];
+			ostr << '\n';
+		}
+	}
 	return ostr;
 }
 
@@ -97,6 +105,8 @@ std::istream& operator>>(std::istream& istr, Image3& image) {
 	}
 	istr >> image.h;
 	istr >> image.w;
+	Color3 empty;
+	image.pixels.resize(3 * image.w * image.h, empty);
 	unsigned max;
 	istr >> max;
 	std::cout << "width is: " << image.w << std::endl;

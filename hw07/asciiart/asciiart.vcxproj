@@ -131,6 +131,7 @@
     <Image Include="parrot.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="newparrot.ppm" />
     <None Include="parrot.ppm" />
   </ItemGroup>
   <ItemGroup>

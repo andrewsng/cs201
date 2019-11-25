@@ -1,3 +1,12 @@
+/*
+mandelbrot.cpp
+Andrew Ng
+Nov 25 2019
+Using asciiart program to print
+out mandelbrot set
+*/
+
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -20,10 +29,22 @@ constexpr int saturate(int x, int maxvalue) {
 
 int main()
 {
+	// new file name
 	std::string newFile = "mandelbrot.ppm";
+
+	// new image of given res
 	Image3 mandelbrot(700, 400);
+
+	if (!mandelbrot.savePPM(newFile)) {
+		cout << "ERROR: Could not export to given file" << endl;
+		return 0;
+	}
+
+	// loop through all pixels
 	for (double Py = 0.0; Py < mandelbrot.h; ++Py) {
 		for (double Px = 0.0; Px < mandelbrot.w; ++Px) {
+
+			// mandelbrot algorithm
 			double x0 = Px / mandelbrot.w * 3.5 - 2.5;
 			double y0 = (Py / mandelbrot.h) * 2.0 - 1.0;
 			double x = 0.0;
@@ -36,7 +57,13 @@ int main()
 				x = xtemp;
 				iteration++;
 			}
+
+			// outputting iteration values to console
+			// for debugging
 			cout << iteration << " ";
+
+			// setting pixels to colors based on iterations
+			// custom colors by clamping max rgb values
 			Color3 newColor;
 			newColor.r = saturate(iteration, 255);
 			newColor.g = saturate(iteration, 10);
@@ -44,5 +71,6 @@ int main()
 			mandelbrot.setPixel((int)Px, (int)Py, newColor);
 		}
 	}
+	// export to file
 	mandelbrot.savePPM(newFile);
 }

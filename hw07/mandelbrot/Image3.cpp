@@ -37,8 +37,11 @@ bool Image3::savePPM(const std::string& path) const {
 	// TODO: Save the image to the disk
 	// REQUIREMENT: Use the STREAM operators for the file contents
 	std::ofstream fout(path);
+	if (!fout) {
+		return false;
+	}
 	fout << *this;
-	return false;
+	return true;
 }
 
 bool Image3::loadPPM(const std::string& path) {

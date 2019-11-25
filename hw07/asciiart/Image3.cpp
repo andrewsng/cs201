@@ -4,11 +4,16 @@
 // CS 201 course
 #include "Image3.hpp"
 
+Image3::Image3() : w(0), h(0)
+{
+}
+
 // Image3 Constructor
 Image3::Image3(unsigned width, unsigned height) {
 	// TODO: resize the pixels array
 	// TODO: initialize the internal w and h members
-	pixels.reserve(3 * width * height);
+	Color3 empty;
+	pixels.resize(3 * width * height, empty);
 	w = width;
 	h = height;
 }
@@ -37,15 +42,28 @@ bool Image3::savePPM(const std::string& path) const {
 bool Image3::loadPPM(const std::string& path) {
 	// TODO: Load an image from the disk
 	// REQUIREMENT: Use the STREAM operators for the file contents
-	return false;
+	std::ifstream fin(path);
+	if (!fin) {
+		std::cout << "ERROR" << std::endl;
+		return false;
+	}
+	fin >> *this;
+	return true;
 }
 
 void Image3::printASCII(std::ostream& ostr) const {
 	// TODO: Print an ASCII version of this image
-	for (int j = 0; j < h; ++j) {
-		for (int i = 0; i < w; ++i) {
+	for (unsigned j = 0; j < h; ++j) {
+		for (unsigned i = 0; i < w; ++i) {
 
 		}
+	}
+	for (unsigned i = 0; i < (3 * w * h); ++i) {
+		if (i % w == 0) {
+			std::cout << "\n" << std::endl;
+		}
+		unsigned luminance = pixels[i].weightedSum();
+		std::cout << pixels[i].asciiValue(luminance);
 	}
 }
 
@@ -62,13 +80,34 @@ std::istream& operator>>(std::istream& istr, Image3& image) {
 	// MAKE SURE FORMAT IS GOOD!!!
 	std::string id;
 	istr >> id;
-	istr >> image.w;
-	istr >> image.h;
 	if (id != "P3") {
 		std::cout << "ERROR" << std::endl;
 	}
-	for (int i = 0; i < (3 * image.w * image.h); ++i) {
-
+	std::cout << "id is: " << id << std::endl;
+	while (true) {
+		char c;
+		istr >> c;
+		if (c == '#') {
+			istr.ignore(1000000, '\n');
+		}
+		else {
+			istr.putback(c);
+			break;
+		}
+	}
+	istr >> image.h;
+	istr >> image.w;
+	unsigned max;
+	istr >> max;
+	std::cout << "width is: " << image.w << std::endl;
+	std::cout << "height is: " << image.h << std::endl;
+	std::cout << "max value is: " << max << std::endl;
+	for (unsigned y = 0; y < image.h; ++y) {
+		for (unsigned x = 0; x < image.w; ++x) {
+			Color3 newColor;
+			istr >> newColor;
+			image.setPixel(x, y, newColor);
+		}
 	}
 	return istr;
 }

@@ -6,12 +6,14 @@
 #define IMAGE3_CPP
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include "Color3.hpp"
 
 class Image3
 {
 public:
+	Image3();
 	Image3(unsigned width, unsigned height);
 	
 	const Color3& getPixel(unsigned x, unsigned y) const;

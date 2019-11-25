@@ -4,6 +4,7 @@
 // CS 201 course
 #include "Image3.hpp"
 
+// Image3 Constructor for no given resolution
 Image3::Image3() : w(0), h(0)
 {
 }
@@ -69,8 +70,8 @@ std::ostream& operator<<(std::ostream& ostr, const Image3& image) {
 	// TODO: Write out PPM image format to stream
 	// ASSUME FORMAT WILL BE GOOD
 	ostr << "P3\n";
-	ostr << image.h << ' ';
-	ostr << image.w << '\n';
+	ostr << image.w << ' ';
+	ostr << image.h << '\n';
 	unsigned max = 255;
 	ostr << max << '\n';
 	for (unsigned y = 0; y < image.h; ++y) {
@@ -101,8 +102,8 @@ std::istream& operator>>(std::istream& istr, Image3& image) {
 			break;
 		}
 	}
-	istr >> image.h;
 	istr >> image.w;
+	istr >> image.h;
 	Color3 empty;
 	image.pixels.resize(3 * image.w * image.h, empty);
 	unsigned max;

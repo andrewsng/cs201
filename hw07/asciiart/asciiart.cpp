@@ -1,3 +1,12 @@
+/*
+asciiart.cpp
+Andrew Ng
+Nov 25 2019
+Ascii art program for hw7
+Utilizing PPM file format
+*/
+
+
 #include <iostream>
 #include <string>
 #include <vector>

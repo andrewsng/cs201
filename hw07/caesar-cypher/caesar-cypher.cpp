@@ -29,7 +29,10 @@ int main()
 		string msg;
 		cout << "Enter a message to cypher (blank line to end): ";
 		getline(cin, msg);
+
+		// quit program
 		if (msg.empty()) {
+			cout << endl << "Program Complete" << endl;
 			return 0;
 		}
 

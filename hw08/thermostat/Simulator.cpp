@@ -9,19 +9,20 @@
 void Simulator::run() {
 	Environment room;
 	Agent thermostat;
+	std::cout << "--------------------------\n";
+	std::cout << "-- Thermostat Simulator --\n";
+	std::cout << "--------------------------" << std::endl;
 	while (true) {
+		std::cout << "\nThe current temperature is: ";
+		std::cout << room.getTemp() << " degrees F" << std::endl;
 		if (!askOwner()) {
 			break;
 		}
 		for (int i = 0; i < 10; ++i) {
 			room.iteration();
-			std::cout << "it" << std::endl;
 			thermostat.perceive(room);
-			std::cout << "perceive" << std::endl;
 			thermostat.think(*this);
-			std::cout << "think" << std::endl;
 			thermostat.act(room);
-			std::cout << "act" << std::endl;
 		}
 	}
 }
@@ -29,15 +30,19 @@ void Simulator::run() {
 
 bool Simulator::askOwner() {
 	std::string str;
-	std::istringstream iss(str);
 	int target;
 	while (true) {
+		std::cout << "\nEnter the target temperature for the thermostat.\n";
+		std::cout << "Enter \"quit\" to end the program." << std::endl;
 		std::getline(std::cin, str);
 		if (str == "quit") {
+			std::cout << "Exiting program..." << std::endl;
 			return false;
 		}
+		std::istringstream iss(str);
 		iss >> target;
 		if (!iss) {
+			std::cout << "Input was not an integer. Try again." << std::endl;
 			iss.clear();
 			iss.ignore(999999, '\n');
 			continue;

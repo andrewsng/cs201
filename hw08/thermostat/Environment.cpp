@@ -4,12 +4,14 @@
 
 void Environment::iteration() {
 	if (heater_) {
+		std::cout << "Raising temperature by 1 degree... ";
 		temperature_++;
 	}
 	else {
+		std::cout << "Lowering temperature by 1 degree... ";
 		temperature_--;
 	}
-	std::cout << temperature_ << std::endl;
+	std::cout << "New temp: " << temperature_ << std::endl;
 }
 
 

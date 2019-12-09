@@ -1,3 +1,11 @@
+/*
+Simulator.cpp
+Andrew Ng
+Dec 8 2019
+source code for Simulator class
+*/
+
+
 #include "Simulator.h"
 #include "Environment.h"
 #include "Agent.h"
@@ -6,6 +14,7 @@
 #include <sstream>
 
 
+// Runs simulation by looping through functions
 void Simulator::run() {
 	Environment room;
 	Agent thermostat;
@@ -19,15 +28,16 @@ void Simulator::run() {
 			break;
 		}
 		for (int i = 0; i < 10; ++i) {
-			room.iteration();
 			thermostat.perceive(room);
 			thermostat.think(*this);
 			thermostat.act(room);
+			room.iteration();
 		}
 	}
 }
 
 
+// Sets target temp or exits program based on input
 bool Simulator::askOwner() {
 	std::string str;
 	int target;
@@ -54,6 +64,7 @@ bool Simulator::askOwner() {
 }
 
 
+// Returns stored target temperature
 int Simulator::getTarget() const {
 	return targetTemp_;
 }

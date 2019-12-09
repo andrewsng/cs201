@@ -1,12 +1,27 @@
+/*
+Agent.h
+Andrew Ng
+Dec 8 2019
+header for Agent class
+*/
+
+
 #pragma once
+
+#ifndef AGENT_H
+#define AGENT_H
+
+
 #include "Environment.h"
 #include "Simulator.h"
 
 
+// Agent class
 class Agent
 {
 public:
-	Agent() : currentTemp_{ 0 }, heaterOpt_{ 0 }
+	// constructor defaults to heater off, room temp
+	Agent() : currentTemp_{ 68 }, heaterOpt_{ 0 }
 	{}
 
 	void perceive(Environment& room);
@@ -19,3 +34,5 @@ private:
 	int currentTemp_;
 	bool heaterOpt_;
 };
+
+#endif

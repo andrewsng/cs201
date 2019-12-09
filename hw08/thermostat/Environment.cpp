@@ -1,7 +1,16 @@
+/*
+Environment.cpp
+Andrew Ng
+Dec 8 2019
+source code for Environment class
+*/
+
+
 #include "Environment.h"
 #include <iostream>
 
 
+// Raises/lowers temp based on heater setting
 void Environment::iteration() {
 	if (heater_) {
 		std::cout << "Raising temperature by 1 degree... ";
@@ -15,11 +24,13 @@ void Environment::iteration() {
 }
 
 
+// Returns current temp
 int Environment::getTemp() const {
 	return temperature_;
 }
 
 
+// Sets heater option to given number
 void Environment::setHeater(const bool& option) {
 	heater_ = option;
 }

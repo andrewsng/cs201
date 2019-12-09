@@ -4,13 +4,15 @@
 class Simulator
 {
 public:
+	Simulator() : targetTemp_{ 68 }
+	{}
+
 	void run();
 
-	void askOwner();
+	bool askOwner();
 
 	int getTarget() const;
 
 private:
 	int targetTemp_;
 };
-

@@ -11,5 +11,6 @@ using std::endl;
 
 int main()
 {
-
+	Simulator coolRoomSim;
+	coolRoomSim.run();
 }

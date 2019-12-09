@@ -1,4 +1,5 @@
 #include "Environment.h"
+#include <iostream>
 
 
 void Environment::iteration() {
@@ -8,6 +9,7 @@ void Environment::iteration() {
 	else {
 		temperature_--;
 	}
+	std::cout << temperature_ << std::endl;
 }
 
 

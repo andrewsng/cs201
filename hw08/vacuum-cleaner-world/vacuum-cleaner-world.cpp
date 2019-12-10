@@ -1,5 +1,5 @@
 /*
-thermostat.cpp
+vacuum-cleaner-world.cpp
 Andrew Ng
 Dec 9 2019
 main for vacuum cleaner simulator

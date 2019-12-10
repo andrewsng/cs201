@@ -33,15 +33,19 @@ void Agent::think(Environment& building) {
 		std::vector<bool> rooms = building.getRooms();
 		int rightDist = INT_MAX;
 		int leftDist = INT_MAX;
-		auto rightIt = std::find(rooms.begin() + currentRoom_, rooms.end(), 1);
-		auto leftIt = std::find(rooms.rbegin() + (rooms.size() - currentRoom_ - 1), rooms.rend(), 1);
+		auto rightIt = std::find(rooms.begin() 
+			+ currentRoom_, rooms.end(), 1);
+		auto leftIt = std::find(rooms.rbegin() 
+			+ (rooms.size() - currentRoom_ - 1), rooms.rend(), 1);
 		if (rightIt != rooms.end()) {
 			rightDist = rightIt - (rooms.begin() + currentRoom_);
-			std::cout << "Dirty room " << rightDist << " room(s) to right" << std::endl;
+			std::cout << "Dirty room " << rightDist
+					<< " room(s) to right" << std::endl;
 		}
 		if (leftIt != rooms.rend()) {
 			leftDist = leftIt - (rooms.rbegin() + (rooms.size() - currentRoom_ - 1));
-			std::cout << "Dirty room " << leftDist << " room(s) to left" << std::endl;
+			std::cout << "Dirty room " << leftDist
+					<< " room(s) to left" << std::endl;
 		}
 		if (leftDist < rightDist) {
 			option_ = 1;
